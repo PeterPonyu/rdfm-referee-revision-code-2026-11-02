@@ -1,0 +1,17 @@
+# Prespecified exploratory support-matched sensitivity
+
+The existing aggregate width, coverage and empty-cycle outcomes, including the fact that there are contradictory cycles, were already visible before this protocol. The proposed paired **nonempty-only** width comparison itself was requested by the simulated referee and has not been calculated in this pass. This is an outcome-informed, exploratory sensitivity, not an independent replication, externally timestamped preregistration or confirmatory fleet experiment.
+
+## Question and hypothesis
+
+For the existing FD004 primary-assignment temporal predictor at cap 100 and alpha 0.10, does causal exact lifetime inversion narrow the **same nonempty cycles** beyond clipping each current interval to the physical support? The directional hypothesis is a strictly positive average paired width reduction on cycles where the exact intersection is nonempty. A zero reduction, invalid pairing, inconsistent reproduced original outcomes or absent inputs is reported as a failure or nonevaluable result; no threshold is tuned after inspection.
+
+## Inputs, roles and method
+
+Use the hash-pinned saved training prediction array, its existing calibration-summary row and the previously stored per-engine band outcomes. Select exactly the `EVAL` role, `temporal_cnn`, FD004, primary assignment 0, cap 100 and alpha 0.10. For every evaluation engine in increasing recorded cycle order, construct the symmetric original interval from its saved prediction and saved calibration quantile. Intersect the current interval with [0,100] for support-only width; use the already implemented causal inverse constraint for the exact-history width. Select cycles with a nonempty exact intersection. Report the eligible and excluded cycle/engine denominators, the mean support-only and exact widths on those same cycles, the mean paired reduction, and the number of eligible cycles that are strictly narrower within 1e-9 numerical tolerance. Also report the fraction of eligible width reduction, and explicit zero-denominator behavior. No engine is treated as an independent fleet sample; cycles are not treated as independent observations. Selection depends on whether the constructed set is empty and is not a coverage guarantee.
+
+## Checks and decision
+
+Before writing outcomes, reconstruct each engine's cycle count, support-only and inverse geometric-width sums, inverse empty count and whole-path coverage from the saved band record within 1e-6 cycles. Abort on changed hashes, missing/duplicate calibration row, out-of-order cycles, unmatched engines, containment failure or mismatched saved outcomes. Check both a synthetic nonempty narrowing example and a synthetic contradiction, plus rejection of a missing row and changed hash. The success rule is only whether the unrounded eligible-cycle mean difference is positive; always report its actual value, exclusions and every validation result. If it is zero or the data are inadequate, say the hypothesis failed or was nonevaluable. There is no inference on a future fleet, no tuning, no new fit and no comparison against a different predictor.
+
+Script and this protocol are committed on a separate local evidence branch before this comparison is executed. The output records script, protocol, branch, input and output hashes, original fitting assignment 0, and the fact that the earlier aggregate outcome had been seen. One command and all dependencies are documented in the resulting report. CPU only; no remote host or download.
